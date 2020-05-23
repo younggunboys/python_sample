@@ -1,0 +1,13 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# make a sample DataFrame
+grp = ['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c']
+col = ['x1', 'x2', 'x3'] * 3
+val = [3.5, 4.2, 2.9, 0.5, 0.2, 0.3, 1.5, 2.5, 2.6]
+
+df = pd.DataFrame({'grp': grp, 
+                  'col': col, 
+                  'val': val})
+df
