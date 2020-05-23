@@ -1,0 +1,24 @@
+import plotly.express as px
+import pandas as pd
+iris = px.data.iris()
+
+fig = px.scatter(iris, x="sepal_width", y="sepal_length")
+fig = px.parallel_coordinates(
+        iris,
+        color="species_id",
+        labels={ "species_id": "Species", "sepal_width": "Sepal Width", "sepal_length": "Sepal Length", "petal_width": "Petal Width", "petal_length": "Petal Length",},
+        color_continuous_scale=px.colors.diverging.Tealrose,
+        color_continuous_midpoint=2)
+
+tips = px.data.tips() 
+tips.head()
+
+
+
+fig = px.parallel_coordinates(
+        iris,
+        color="species_id",
+        labels={ "species_id": "Species", "sepal_width": "Sepal Width", "sepal_length": "Sepal Length", "petal_width": "Petal Width", "petal_length": "Petal Length",},
+        color_continuous_scale=px.colors.diverging.Tealrose,
+        color_continuous_midpoint=2) 
+fig.show()
