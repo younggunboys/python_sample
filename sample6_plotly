@@ -1,0 +1,11 @@
+import plotly as py
+import cufflinks as cf
+cf.go_offline(connected=True)
+
+df = cf.datagen.lines() 
+df.head()
+
+
+
+
+df.iplot(kind='line')
