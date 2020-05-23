@@ -1,24 +1,28 @@
-import plotly.express as px
+import numpy as np
 import pandas as pd
-iris = px.data.iris()
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.rcParams['figure.figsize'] = [12, 8]
 
-fig = px.scatter(iris, x="sepal_width", y="sepal_length")
-fig = px.parallel_coordinates(
-        iris,
-        color="species_id",
-        labels={ "species_id": "Species", "sepal_width": "Sepal Width", "sepal_length": "Sepal Length", "petal_width": "Petal Width", "petal_length": "Petal Length",},
-        color_continuous_scale=px.colors.diverging.Tealrose,
-        color_continuous_midpoint=2)
+np.random.seed(123) # for reproducibility
+index = pd.date_range("1 1 2010", 
+                      periods=100, 
+                      freq="m", 
+                      name="Date")
 
-tips = px.data.tips() 
-tips.head()
+data = np.random.randn(100, 4).cumsum(axis=0)
 
+wide_df = pd.DataFrame(data, index, ['a', 'b', 'c', 'd'])
+wide_df.shape
+(100, 4)
+wide_df.head()
 
+plt.plot(wide_df.index, wide_df.a, marker='s', color='r')
+plt.plot(wide_df.index, wide_df.b, marker='o', color='g')
+plt.plot(wide_df.index, wide_df.c, marker='*', color='b')
+plt.plot(wide_df.index, wide_df.d, marker='+', color='y')
 
-fig = px.parallel_coordinates(
-        iris,
-        color="species_id",
-        labels={ "species_id": "Species", "sepal_width": "Sepal Width", "sepal_length": "Sepal Length", "petal_width": "Petal Width", "petal_length": "Petal Length",},
-        color_continuous_scale=px.colors.diverging.Tealrose,
-        color_continuous_midpoint=2) 
-fig.show()
+plt.title('Line Graph w/ different markers and colors', fontsize=20) 
+plt.ylabel('Cummulative Num', fontsize=14)
+plt.xlabel('Date', fontsize=14)
+plt.show()
